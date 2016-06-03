@@ -1,0 +1,35 @@
+README file for the Saxion ACT processing State Machine Template
+
+
+Introduction
+
+The state machine helps developers to maintain more complex program while keeping
+overview over the whole program. The template shows just three states and can be used
+as a starting point for your own state machine programs.
+
+
+States
+
+Standby    - black background and waits for a keypress to go to the Attraction state.
+
+Attraction - blinks the background and waits for a keypress
+             if the mouse is in the lower half of the screen, it changes to the NIGHT
+            state, and otherwise it changes to the day state.
+
+MovingBall  - displays a ball. The color depends on the mouseY position. The ball position
+             depends on the mouseX position in a diagonal line.
+
+
+
+Creating a State
+
+In order to create a state, choose an existing state which will look most like the new
+state and copy it to a new tab. Then change the doWhileInState method and other methods
+as necessary.
+
+
+
+Tips & Tricks
+
+Change the event handling by changing or adding 
+

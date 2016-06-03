@@ -1,0 +1,42 @@
+README file for the Saxion ACT processing State Machine
+
+Introduction
+
+The state machine helps developers to maintain more complex program while keeping
+overview over the whole program. The state machine consists of a number of user defined
+states and a state handler. The state handler handles the draw, mouse and keyboard events
+by passing them on to the current state. Only one state can be active at one time.
+
+
+Setup
+
+At the start of the program, a StateHandler and a number of States are created. The
+stateHandler is initialised with a name and has no state. To change state, the
+method changeStateTo() is called.
+
+
+Actions
+
+Each state is responsible for the method (function) doWhileInState(). This method
+is called once every draw(). Before changing to a specific state, the method enterState()
+of that specific state is called. When changing to another state, the method leaveState()
+is called. The normal action is to do nothing so as a State developer, you don't have to
+specify it when no special actions are necessary.
+
+When in a specific state, the number of seconds and milliseconds in a state are kept in
+the stateHandler.
+
+
+Event handling
+
+For event handling, only mouseClicked and keyPressed are provided. Only the current state
+receives an event. More events are possible, if added to the State and StateHandler
+classes.
+
+
+
+Tips & Tricks
+
+The stateExample is quite elaborate, the StateTemplate is easier to start from when
+building a new program.
+

@@ -1,0 +1,38 @@
+README file for the Saxion ACT processing State Machine Example
+
+Introduction
+
+The state machine helps developers to maintain more complex program while keeping
+overview over the whole program. The example shows a number of possible states, each
+showing certain specific features.
+
+
+States
+
+Standby    - black background and waits for a keypress to go to the Attraction state.
+
+Attraction - blinks the background and waits for a keypress
+             if the mouse is in the lower half of the screen, it changes to the NIGHT
+            state, and otherwise it changes to the day state.
+
+Night      - displays a moon depending on the mouseY position. At the lowest point
+             of the screen it is new moon and completely dark. The moon moves opposite to
+             the mouseX position in an arc. A keypress changes to the Movie state.
+
+Day        - displays the sun depending on the mouseX position. At the edges of the
+             screen it is twilight, in the middle it is day. A keypress changes to
+             the Movie state.
+
+Movie      - shows a movie and when finished changes to the City state.
+
+City       - blends two pictures of a city depending on the mouseY position
+             lower of the screens means more night visible. When a key is pressed
+            it changes to the Standby state.
+
+
+
+Tips & Tricks
+
+The stateExample is quite elaborate, the StateTemplate is easier to start from when
+building a new program.
+
