@@ -1,6 +1,10 @@
 
+
 class DayState extends State
 {
+    State previousState;
+
+
     public DayState()
     {
         super( "day" );
@@ -9,7 +13,12 @@ class DayState extends State
 
     void handleKeyPress( int keyCode )
     {
-        stateHandler.changeStateTo( CITY_STATE );
+        stateHandler.changeStateTo( previousState == CITY_STATE ? MOVIE_STATE : CITY_STATE );
+    }
+
+
+    public void enterState( State oldState ) {
+        previousState = oldState;
     }
 
 

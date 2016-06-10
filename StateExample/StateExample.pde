@@ -1,4 +1,4 @@
-// Example for States
+// Example for the State machine
 //
 
 
@@ -17,7 +17,8 @@ PApplet parent = this;
 
 void setup()
 {
-    size( 1280,720 );
+    fullScreen();
+    //size( 1280,720 );
     noStroke();
     stateHandler = new StateHandler( "State Example" );
     stateHandler.changeStateTo( STANDBY_STATE );
@@ -26,5 +27,4 @@ void setup()
 void draw()
 {
     stateHandler.handleState();
-    traceIfChanged( "state" , stateHandler.getStateName() );
 } //<>//

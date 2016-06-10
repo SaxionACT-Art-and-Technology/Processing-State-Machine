@@ -1,6 +1,5 @@
 
 
-
 class AttractionState extends State
 {
     public AttractionState()

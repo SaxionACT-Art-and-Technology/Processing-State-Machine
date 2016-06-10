@@ -1,0 +1,39 @@
+README file for the Saxion ACT processing State Machine Example with Arduino
+
+Introduction
+
+The state machine helps developers to maintain more complex program while keeping
+overview over the whole program. The example shows a number of possible states, each
+showing certain specific features. The states are controlled with an Arduino.
+
+
+States
+
+Standby    - black background and waits for a button press to go to the Attraction state.
+
+Attraction - blinks the background and waits for a button press
+             if the LDR value is lower than 256, it changes to the NIGHT state
+             and otherwise it changes to the day state.
+
+Night      - displays a moon depending on the potmeter position. At the lowest point of
+             the screen it is new moon and completely dark. A button press changes to the
+             city state if it was not the previous state and the movie state otherwise.
+
+Day        - displays the sun depending on the mouseX position. At the edges of the
+             screen it is twilight, in the middle it is day. A button press changes to the
+             city state if it was not the previous state and the movie state otherwise.
+
+City       - blends two pictures of a city depending on the LDR value. A lower light
+             value means more night visible. When the button is pressed it either changes
+             to the Night or Day state whichever state was not the previous state.
+
+Movie      - shows a movie and when finished changes to the Standby state.
+
+
+
+
+Tips & Tricks
+
+The StateExampleWithArduino is quite elaborate, the StateTemplateWithArduino is easier to
+start from when building a new program.
+

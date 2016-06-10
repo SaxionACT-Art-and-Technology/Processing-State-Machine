@@ -1,5 +1,3 @@
-
-
 import processing.video.*;
 
 
@@ -7,22 +5,22 @@ class MovieState extends State
 {
     Movie myMovie;
 
+    public MovieState()
+    {
+        super( "movie" );
+    }
+
+
     public void enterState( State oldState )
     {
         if ( myMovie == null ) {
             myMovie = new Movie( parent, "small.mp4" );
         }
         myMovie.loop();
+        background( 0 );  // to see that the state is changed
     }
 
     
-    void handleKeyPress( int keyCode )
-    {
-        // no interuption of the movie, if annoying, decomment line below
-        // stateHandler.changeState( STANDBY_STATE );
-    }
-
-
     public void leaveState( State newState )
     {
         if ( myMovie != null ) {
@@ -31,12 +29,6 @@ class MovieState extends State
     }
 
     
-    public MovieState()
-    {
-        super( "movie" );
-    }
-
-
     public void doWhileInState()
     {
         if ( stateHandler.secondsInState() > 5.8 ) {

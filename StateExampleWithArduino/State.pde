@@ -3,13 +3,11 @@
 // Change/remove these function if you want to program your 
 // own mouseClicked or keyPressed functions
 
-void mouseClicked()
-{
+void mouseClicked() {
     stateHandler.mouseClicked();
 }
 
-void keyPressed()
-{
+void keyPressed() {
     stateHandler.keyPressed();
 }
 
@@ -30,15 +28,11 @@ class State
         String className = this.getClass().getSimpleName();
         name = className;
          println( "new State() : " + name );
-    }
+   }
 
 
     String getName() { return name; }
-    
-    
-    // Empty methods, no actions except when defined in a derived class
-    
-    
+
     void enterState( State oldState )
     {
     }
@@ -62,6 +56,11 @@ class State
     void handleMouseClick()
     {
     }
+    
+    
+    void handleMouseGesture()
+    {
+    }
 }
 
 
@@ -79,7 +78,8 @@ class StateHandler
     }
 
 
-    String getName()             { return name;                                                 }
+    String getName()             { return name; }
+
     String getStateName()        { return currentState != null ? currentState.getName() : "" ;  }
     long   secondsInState()      { return ( System.nanoTime() - nsAtStateStart ) / 1000000000 ; }
     long   milliSecondsInState() { return ( System.nanoTime() - nsAtStateStart ) /    1000000 ; }

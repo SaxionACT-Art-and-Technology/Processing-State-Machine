@@ -1,6 +1,5 @@
 
 
-
 class StandbyState extends State
 {
     public StandbyState()
@@ -15,7 +14,7 @@ class StandbyState extends State
     }
 
 
-    public void doWhileInState()
+    public void enterState( State oldState )
     {
         background( 0 );
     }

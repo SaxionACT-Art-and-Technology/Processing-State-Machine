@@ -1,8 +1,10 @@
 
 
-
 class NightState extends State
 {
+    State previousState;
+
+
     public NightState()
     {
         super( "night" );
@@ -11,14 +13,18 @@ class NightState extends State
 
     void handleKeyPress( int keyCode )
     {
-        stateHandler.changeStateTo( STANDBY_STATE );
+        stateHandler.changeStateTo( previousState == CITY_STATE ? MOVIE_STATE : CITY_STATE );
+    }
+
+
+    public void enterState( State oldState ) {
+        previousState = oldState;
     }
 
 
     public void doWhileInState()
     {
-        int darkness = (int) map( mouseY, 0, height, 127, 0 );
-        traceIfChanged( darkness + "" , "darkness" );
+        int darkness = (int) map( mouseX, 0, width, 127, 0 );
         background( darkness );
         drawMoon( darkness );
         fill( darkness, darkness, 0 );
