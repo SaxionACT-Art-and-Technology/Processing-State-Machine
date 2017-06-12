@@ -21,11 +21,14 @@ final int POTMETER_MIN_VALUE =    0;
 final int POTMETER_MAX_VALUE = 1023;
 
 int potmeterValue;
+int previousPotmeterValue;
 
 boolean  isButtonPressed = false;
 boolean wasButtonPressed = false;
 
 boolean isLedOn = false;
+
+int lastTimeActivityWasDetected = 0;
 
 void setup() {
     size( 1280,720 );
@@ -52,14 +55,26 @@ void draw() {
 
 
 void processData() {
-  stateHandler.handleState();
-  wasButtonPressed = isButtonPressed;
+    checkActivityAndGoToStandbyIfInactiveForTooLong();
+    stateHandler.handleState();
+    wasButtonPressed = isButtonPressed;
+}
+
+
+void checkActivityAndGoToStandbyIfInactiveForTooLong()
+{
+    int now = millis();
+    if ( isButtonPressed ) {
+        lastTimeActivityWasDetected = now;
+    }
+ 
+    if ( now - lastTimeActivityWasDetected > 10000 ) {
+        stateHandler.changeStateTo( STANDBY_STATE );
+    }
 }
 
 
 void readArduinoInputs() {
-    wasButtonPressed = isButtonPressed;
-
     potmeterValue   = arduino.analogRead ( POTMETER_PIN );
     isButtonPressed = arduino.digitalRead(   BUTTON_PIN ) == Arduino.HIGH;
     
